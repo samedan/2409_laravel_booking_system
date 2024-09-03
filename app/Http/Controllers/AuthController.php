@@ -13,7 +13,7 @@ class AuthController extends Controller
     public function register(Request $request) {
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|between:2,100',
-            'phone_number' => 'required|string|max:100|unique:users',
+            'email' => 'required|string|max:100|unique:users',
             'password' => 'required|string|min:6',
         ]);
         if($validator->fails()){
@@ -34,7 +34,7 @@ class AuthController extends Controller
     // LOGIN
     public function login(Request $request){
     	$validator = Validator::make($request->all(), [
-            'phone_number' => 'required',
+            'email' => 'required',
             'password' => 'required|string|min:6',
         ]);
         if ($validator->fails()) {
@@ -43,14 +43,19 @@ class AuthController extends Controller
         if (! $token = auth()->attempt($validator->validated())) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
-        $x= $this->createNewToken($token);
+        // $x= $this->createNewToken($token);
 
-        return response()->json([
-            'result' => ['message'=>'success',
-            'token' => $x,
-        ],
-        'error'=>null
-        ]);
+        // return response()->json([
+        //     'result' => ['message'=>'success',
+        //     'token' => $x,
+        // ],
+        // 'error'=>null
+        // ]);
+
+        $user = User::where('email', $request->email)->first();
+        $token = $user->createToken('auth-token')->plainTextToken;
+
+        return response()->json(['token'=> $token]);
     }
 
 

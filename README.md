@@ -10,3 +10,10 @@
 
 > composer create-project laravel/laravel:^10.0 example-app
 > php artisan make:controller AuthController
+> glaudia-carcia
+
+> php artisan migrate
+
+## Redirect if not good Auth
+
+> app/http/Middleware/Authenticate
