@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('business', function (Blueprint $table) {
+        Schema::create('bookings', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->dateTime('time');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->dateTime('opening_hours');
-            $table->enum('status', ['open', 'closed'])->default('open');
+            $table->foreignId('service_id')->constrained('services');
             $table->timestamps();
         });
     }
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('business');
+        Schema::dropIfExists('bookings');
     }
 };
