@@ -17,3 +17,9 @@
 ## Redirect if not good Auth
 
 > app/http/Middleware/Authenticate
+
+### Added Models & Migrations
+
+> Business, Services, Bookings, Reviews
+
+https://www.youtube.com/watch?v=42Sa0WAfeI4&list=PLNz9AB5vYdVMPXK8pM0GLraD1OAib0X_T&index=5
