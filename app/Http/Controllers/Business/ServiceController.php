@@ -23,7 +23,7 @@ class ServiceController extends Controller
     }
 
     // POST service
-    public function store(Request$request) {
+    public function store(Request $request) {
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|between:2,100',
             'price' => 'required'

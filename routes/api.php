@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\BusinessController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BookingsController;
 use App\Http\Controllers\Business\ServiceController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -28,6 +29,7 @@ Route::apiResource('business', BusinessController::class);
 
 Route::middleware('auth:sanctum')->group(function() {
     Route::apiResource('service', ServiceController::class);
+    Route::apiResource('booking', BookingsController::class);
     Route::post('update_service/{id}', [ServiceController::class, 'update']);
 });
 
