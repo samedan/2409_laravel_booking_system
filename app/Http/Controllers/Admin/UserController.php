@@ -11,7 +11,7 @@ class UserController extends Controller
 {
     // GET all Users
     public function index() {
-        $users = User::all(10);
+        $users = User::all();
         return view('users', compact('users'));
     }
 
