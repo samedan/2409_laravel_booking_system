@@ -11,8 +11,12 @@ class UserController extends Controller
 {
     // GET all Users
     public function index() {
-        $users = User::paginate(10);
-        return response()->json($users);
+        $users = User::all(10);
+        return view('users', compact('users'));
+    }
+
+    public function create() {
+        return view('create_user');
     }
 
     public function store(Request $request) {
@@ -30,12 +34,13 @@ class UserController extends Controller
                 $validator->validated(),
                 ['password' => bcrypt('User is added')]
             ) );
-        return response()->json('User has been added');
+        return redirect()->back();
     }
 
     public function destroy($id) {
         $user = User::findOrFail($id);
         $user->delete();
-        return response()->json('User has been deleted');
+        // return response()->json('User has been deleted');
+        return redirect()->back();
     }
 }

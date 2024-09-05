@@ -23,3 +23,10 @@
 > Business, Services, Bookings, Reviews
 
 https://www.youtube.com/watch?v=42Sa0WAfeI4&list=PLNz9AB5vYdVMPXK8pM0GLraD1OAib0X_T&index=5
+
+### Admin Middleware
+
+> AdminMiddleware.php
+> Kernel.php -> protected $middlewareAliases = [...]
+
+https://www.youtube.com/watch?v=Iu83R4hjQQE&list=PLNz9AB5vYdVMPXK8pM0GLraD1OAib0X_T&index=6
