@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Business;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -17,7 +18,8 @@ class BusinessController extends Controller
     }
 
     public function create() {
-        return view('create_business');
+        $users = User::all();
+        return view('create_business', compact('users'));
     }
 
     // POST Business
@@ -64,6 +66,7 @@ class BusinessController extends Controller
     public function destroy($id) {
         $business = Business::findOrFail($id);
         $business->delete();
-        return response()->json('Business is deleted');
+        // return response()->json('Business is deleted');
+        return redirect()->back();
     }
 }

@@ -8,20 +8,26 @@
             <form action="{{ route('new_business')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
-                    <div class="form-group">
+                <div class="form-group">
                     <div class="col-sm-10">
                         <label>Name</label>
                         <input type="text" class="form-control" name="name">
                     </div>
                 </div>
-                    <div class="form-group">
+                {{-- <div class="form-group">
+                    <div class="col-sm-10">
+                        <label>User Id</label>
+                        <input type="text" class="form-control" name="user_id">
+                    </div>
+                </div> --}}
+                <div class="form-group">
                     <div class="col-sm-10">
                         <label>User</label>
                         <select name="user_id" id="user_id" class="form-control">
                             <option>All users</option>
-                            @foreach ($users as $user)
-                            <option value="{{$user->id}}">{{$user->name}}</option>
-                            @endforeach
+                                @foreach ($users as $user)
+                                    <option value="{{$user->id}}">{{$user->name}}</option>
+                                @endforeach
                         </select>
                     </div>
                 </div>
